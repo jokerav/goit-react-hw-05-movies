@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const Navigation = () => (
   <nav>
-    <Link to={'/'}>Home</Link>
-    <Link to={'/movies'}>Movies</Link>
-    <Link to={'/movies/:movieId'}></Link>
-    <Link to={'/movies/:movieId/cast'}></Link>
-    <Link to={'/movies/:movieId/reviews'}></Link>
+    <NavLink to={'/'}>Home</NavLink>
+    <NavLink to={'/movies'}>Movies</NavLink>
+    <NavLink to={'/movies/:movieId'}></NavLink>
+    <NavLink to={'/movies/:movieId/cast'}></NavLink>
+    <NavLink to={'/movies/:movieId/reviews'}></NavLink>
   </nav>
 );
 export default Navigation;
