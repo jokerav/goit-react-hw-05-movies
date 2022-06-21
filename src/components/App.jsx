@@ -1,3 +1,5 @@
+import { Routes, Route } from 'react-router-dom';
+import Home from './Home/Home';
 import Navigation from './Navigation/Navigation';
 
 export const App = () => {
@@ -13,6 +15,9 @@ export const App = () => {
     // }}
     >
       <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
     </div>
   );
 };
