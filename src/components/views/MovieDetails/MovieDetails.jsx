@@ -5,7 +5,7 @@ import { useParams, Link, Outlet } from 'react-router-dom';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
-  useEffect(() => getMovie, [movieId]);
+  useEffect(() => getMovie, []);
   const getMovie = () => {
     axios
       .get(
