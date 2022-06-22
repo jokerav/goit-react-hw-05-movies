@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, Link, Outlet } from 'react-router-dom';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
-  useEffect(() => getMovie, []);
+  useEffect(() => getMovie, [movieId]);
   const getMovie = () => {
     axios
       .get(
@@ -16,11 +15,23 @@ const MovieDetails = () => {
   };
   const imgPath = 'https://image.tmdb.org/t/p/w500';
   const { title, poster_path } = movie;
+
   return (
     <>
       <h1>{title}</h1>
-      <img src={`${imgPath}${poster_path}`} />
+      <img
+        src={`${imgPath}${poster_path}`}
+        alt={`Poster to ${title}`}
+        height="450px"
+      />
       <p>Additional information</p>
+      <p>
+        <Link to={`cast`}>Cast</Link>
+      </p>
+      <p>
+        <Link to={`reviews`}>Reviews</Link>
+        <Outlet />
+      </p>
     </>
   );
 };
