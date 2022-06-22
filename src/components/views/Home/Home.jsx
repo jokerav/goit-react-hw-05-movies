@@ -12,7 +12,6 @@ const Home = () => {
       )
       .then(response => {
         console.log(response.data.results);
-        console.log(Date.now());
         setTrandingMovie(response.data.results);
       });
   };
