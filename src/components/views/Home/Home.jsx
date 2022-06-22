@@ -16,7 +16,7 @@ const Home = () => {
         setTrandingMovie(response.data.results);
       });
   };
-  useEffect(() => getTrandingMovie());
+  useEffect(() => getTrandingMovie(), []);
 
   return (
     <ul>

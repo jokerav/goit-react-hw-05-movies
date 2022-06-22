@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
-  useEffect(() => getMovie());
+  useEffect(() => getMovie, []);
   const getMovie = () => {
     axios
       .get(
@@ -14,7 +14,14 @@ const MovieDetails = () => {
       )
       .then(response => setMovie(response.data));
   };
-  const { title } = movie;
-  return <h1>{title}</h1>;
+  const imgPath = 'https://image.tmdb.org/t/p/w500';
+  const { title, poster_path } = movie;
+  return (
+    <>
+      <h1>{title}</h1>
+      <img src={`${imgPath}${poster_path}`} />
+      <p>Additional information</p>
+    </>
+  );
 };
 export default MovieDetails;
