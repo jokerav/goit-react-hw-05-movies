@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './Home/Home';
+import Home from './views/Home/Home';
 import Navigation from './Navigation/Navigation';
+import MovieDetails from './views/MovieDetails/MovieDetails';
 
 export const App = () => {
   return (
@@ -16,7 +17,8 @@ export const App = () => {
     >
       <Navigation />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route path="/movies/:movieId" element={<MovieDetails />}></Route>
       </Routes>
     </div>
   );
