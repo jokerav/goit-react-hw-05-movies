@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 import { useState, useEffect } from 'react';
-import { Link, useMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Home = () => {
   const [trandingMovie, setTrandingMovie] = useState([]);
-  // const { url } = useMatch();
+
   const getTrandingMovie = () => {
     axios
       .get(
@@ -17,7 +17,6 @@ const Home = () => {
       });
   };
   useEffect(() => getTrandingMovie(), []);
-  // console.log(url);
 
   return (
     <ul>
