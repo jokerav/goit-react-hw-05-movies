@@ -13,7 +13,6 @@ https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=9e5cf4f45ae60b7760
       .then(response => setReviews(response.data.results));
   };
   useEffect(() => getMovie(movieId), [movieId]);
-  console.log(reviews);
 
   return (
     <ul>
