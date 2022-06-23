@@ -13,7 +13,7 @@ https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=9e5cf4f45ae60b7760
       .then(response => setCast(response.data.cast));
   };
   useEffect(() => getMovie(movieId), [movieId]);
-  console.log(casts);
+
   return (
     <ul>
       {casts.map(({ cast_id, original_name }) => (
