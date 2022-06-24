@@ -11,7 +11,7 @@ const Home = () => {
         'https://api.themoviedb.org/3/trending/movie/day?api_key=9e5cf4f45ae60b7760108794dc459813'
       )
       .then(response => {
-        console.log(response.data.results);
+        // console.log(response.data.results);
         setTrandingMovie(response.data.results);
       });
   };
