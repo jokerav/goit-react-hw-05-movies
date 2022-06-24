@@ -4,33 +4,35 @@ import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 import MoviesList from '../MoviуsList/MoviуsList';
 const FindMovie = () => {
-  const [input, SetInput] = useState('');
+  const [input, setInput] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams({});
   const querry = searchParams.get('querry');
 
   const onChange = e => {
     const { value } = e.currentTarget;
-    SetInput(value);
+    setInput(value);
   };
   const onSubmit = e => {
     e.preventDefault();
     setSearchParams({ querry: input.toLowerCase().trim() });
   };
 
-  const getMovie = searchParams => {
+  const getMovie = search => {
+    if (search === null) {
+      return;
+    }
     axios
       .get(
         `
-https://api.themoviedb.org/3/search/movie?api_key=9e5cf4f45ae60b7760108794dc459813&language=en-US&query=${searchParams}&page=1&include_adult=false`
+https://api.themoviedb.org/3/search/movie?api_key=9e5cf4f45ae60b7760108794dc459813&language=en-US&query=${search}&page=1&include_adult=false`
       )
       .then(response => {
-        console.log(response.data.results);
         setMovies(response.data.results);
       });
   };
-
   useEffect(() => getMovie(querry), [querry]);
+
   return (
     <>
       <form onSubmit={onSubmit}>
