@@ -2,8 +2,10 @@ import { useEffect, lazy } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
+
 // import MoviesList from '../MoviуsList/MoviуsList';
 const MoviesList = lazy(() => import('../MoviуsList/MoviуsList'));
+
 const FindMovie = () => {
   const [input, setInput] = useState('');
   const [movies, setMovies] = useState([]);
