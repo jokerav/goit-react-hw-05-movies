@@ -10,12 +10,15 @@ const MovieDetails = () => {
       .get(
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=9e5cf4f45ae60b7760108794dc459813&language=en-US`
       )
-      .then(response => setMovie(response.data));
+      .then(response => {
+        console.log(response.data);
+        setMovie(response.data);
+      });
   };
   useEffect(() => getMovie(movieId), [movieId]);
 
   const imgPath = 'https://image.tmdb.org/t/p/w500';
-  const { title, poster_path } = movie;
+  const { title, poster_path, overview } = movie;
 
   return (
     <>
@@ -25,6 +28,7 @@ const MovieDetails = () => {
         alt={`Poster to ${title}`}
         height="450px"
       />
+      <p>{overview}</p>
       <p>Additional information</p>
       <p>
         <Link to={`cast`}>Cast</Link>
