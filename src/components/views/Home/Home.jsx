@@ -18,13 +18,16 @@ const Home = () => {
   useEffect(() => getTrandingMovie(), []);
 
   return (
-    <ul>
-      {trandingMovie.map(movie => (
-        <li key={movie.id}>
-          <Link to={`/movies/${movie.id}`}>{movie.original_title}</Link>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h1>Tranding today</h1>
+      <ul>
+        {trandingMovie.map(movie => (
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`}>{movie.original_title}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 export default Home;
