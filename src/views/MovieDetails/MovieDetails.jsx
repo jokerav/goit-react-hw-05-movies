@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect, Suspense } from 'react';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
   const getMovie = movieId => {
     axios
       .get(
@@ -21,6 +23,7 @@ const MovieDetails = () => {
 
   return (
     <>
+      <Link to={backLinkHref}>Back</Link>
       <h1>{title}</h1>
       <img
         src={`${imgPath}${poster_path}`}
