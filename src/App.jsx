@@ -2,12 +2,6 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 
-// import MovieDetails from './views/MovieDetails/MovieDetails';
-// import Cast from './views/Cast/Cast';
-// import Reviews from './views/Reviews/Reviews';
-// import FindMovie from './views/FindMovie/FindMovie';
-// import Home from './views/Home/Home';
-
 const Home = lazy(() => import('./views/Home/Home'));
 const MovieDetails = lazy(() => import('./views/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./views/Cast/Cast'));
