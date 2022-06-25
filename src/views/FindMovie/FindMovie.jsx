@@ -4,13 +4,13 @@ import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 
 // import MoviesList from '../MoviуsList/MoviуsList';
-const MoviesList = lazy(() => import('../MoviуsList/MoviуsList'));
+const MoviesList = lazy(() => import('../MoviesList/MoviesList'));
 
 const FindMovie = () => {
-  const [input, setInput] = useState('');
-  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams({});
   const querry = searchParams.get('querry');
+  const [input, setInput] = useState(querry);
+  const [movies, setMovies] = useState([]);
 
   const onChange = e => {
     const { value } = e.currentTarget;
@@ -19,6 +19,7 @@ const FindMovie = () => {
   const onSubmit = e => {
     e.preventDefault();
     setSearchParams({ querry: input.toLowerCase().trim() });
+    setInput(input.toLowerCase().trim());
   };
 
   const getMovie = search => {
@@ -34,7 +35,9 @@ https://api.themoviedb.org/3/search/movie?api_key=9e5cf4f45ae60b7760108794dc4598
         setMovies(response.data.results);
       });
   };
-  useEffect(() => getMovie(querry), [querry]);
+  useEffect(() => {
+    getMovie(querry);
+  }, [querry]);
 
   return (
     <>
@@ -53,7 +56,7 @@ https://api.themoviedb.org/3/search/movie?api_key=9e5cf4f45ae60b7760108794dc4598
         </button>
       </form>
 
-      {movies && <MoviesList movies={movies} />}
+      {movies.length > 0 && <MoviesList movies={movies} />}
     </>
   );
 };

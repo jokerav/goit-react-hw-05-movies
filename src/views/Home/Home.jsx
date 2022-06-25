@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Home = () => {
   const [trandingMovie, setTrandingMovie] = useState([]);
-
+  const navigate = useNavigate();
   const getTrandingMovie = () => {
     axios
       .get(
@@ -15,7 +15,11 @@ const Home = () => {
         setTrandingMovie(response.data.results);
       });
   };
-  useEffect(() => getTrandingMovie(), []);
+
+  useEffect(() => {
+    navigate('/', { replace: true });
+    getTrandingMovie();
+  }, [navigate]);
 
   return (
     <>

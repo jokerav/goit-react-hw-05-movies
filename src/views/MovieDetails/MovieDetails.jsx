@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 
 const MovieDetails = () => {
@@ -11,7 +11,6 @@ const MovieDetails = () => {
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=9e5cf4f45ae60b7760108794dc459813&language=en-US`
       )
       .then(response => {
-        console.log(response.data);
         setMovie(response.data);
       });
   };
@@ -35,8 +34,10 @@ const MovieDetails = () => {
       </p>
       <p>
         <Link to={`reviews`}>Reviews</Link>
-        <Outlet />
       </p>
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
