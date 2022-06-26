@@ -2,8 +2,6 @@ import { useEffect, lazy } from 'react';
 import { useState } from 'react';
 import { getMovie } from 'services/moviesApi';
 import { useSearchParams } from 'react-router-dom';
-
-// import MoviesList from '../MoviуsList/MoviуsList';
 const MoviesList = lazy(() => import('../../components/MoviesList/MoviesList'));
 
 const FindMovie = () => {
