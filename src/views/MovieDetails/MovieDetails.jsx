@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getMovieDetails } from 'services/moviesApi';
 import { useState, useEffect, Suspense } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
 
@@ -7,16 +7,18 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-  const getMovie = movieId => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=9e5cf4f45ae60b7760108794dc459813&language=en-US`
-      )
-      .then(response => {
-        setMovie(response.data);
-      });
-  };
-  useEffect(() => getMovie(movieId), [movieId]);
+  // const getMovie = movieId => {
+  //   axios
+  //     .get(
+  //       `https://api.themoviedb.org/3/movie/${movieId}?api_key=9e5cf4f45ae60b7760108794dc459813&language=en-US`
+  //     )
+  //     .then(response => {
+  //       setMovie(response.data);
+  //     });
+  // };
+  useEffect(() => {
+    getMovieDetails(movieId).then(movie => setMovie(movie));
+  }, [movieId]);
 
   const imgPath = 'https://image.tmdb.org/t/p/w500';
   const { title, poster_path, overview } = movie;
