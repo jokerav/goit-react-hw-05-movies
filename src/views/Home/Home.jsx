@@ -1,24 +1,22 @@
-import axios from 'axios';
-
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getTrandingMovie } from '../../services/moviesApi';
 const Home = () => {
   const [trandingMovie, setTrandingMovie] = useState([]);
   const navigate = useNavigate();
-  const getTrandingMovie = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/trending/movie/day?api_key=9e5cf4f45ae60b7760108794dc459813'
-      )
-      .then(response => {
-        // console.log(response.data.results);
-        setTrandingMovie(response.data.results);
-      });
-  };
+  // const getTrandingMovie = () => {
+  //   axios
+  //     .get(
+  //       'https://api.themoviedb.org/3/trending/movie/day?api_key=9e5cf4f45ae60b7760108794dc459813'
+  //     )
+  //     .then(response => {
+  //       setTrandingMovie(response.data.results);
+  //     });
+  // };
 
   useEffect(() => {
     navigate('/', { replace: true });
-    getTrandingMovie();
+    getTrandingMovie().then(movies => setTrandingMovie([...movies]));
   }, [navigate]);
 
   return (

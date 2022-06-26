@@ -18,5 +18,11 @@ https://api.themoviedb.org/3/search/movie?api_key=9e5cf4f45ae60b7760108794dc4598
   );
   return response.data.results;
 };
-export { getCast, getMovie };
+const getTrandingMovie = async () => {
+  const response = await axios.get(
+    'https://api.themoviedb.org/3/trending/movie/day?api_key=9e5cf4f45ae60b7760108794dc459813'
+  );
+  return response.data.results;
+};
+export { getCast, getMovie, getTrandingMovie };
 //
