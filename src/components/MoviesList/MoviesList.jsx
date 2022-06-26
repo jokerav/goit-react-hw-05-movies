@@ -12,11 +12,13 @@ const MoviesList = ({ movies }) => {
   );
 };
 MoviesList.propTypes = {
-  movies: PropTypes.shape(
-    {
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-    }.isRequired
+  movies: PropTypes.array(
+    PropTypes.shape(
+      {
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+      }.isRequired
+    )
   ),
 };
 
