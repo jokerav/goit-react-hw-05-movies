@@ -4,7 +4,7 @@ import { getMovie } from 'services/moviesApi';
 import { useSearchParams } from 'react-router-dom';
 
 // import MoviesList from '../MoviуsList/MoviуsList';
-const MoviesList = lazy(() => import('../MoviesList/MoviesList'));
+const MoviesList = lazy(() => import('../../components/MoviesList/MoviesList'));
 
 const FindMovie = () => {
   const [searchParams, setSearchParams] = useSearchParams({});
