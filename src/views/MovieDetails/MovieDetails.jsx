@@ -6,7 +6,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState({});
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location?.state?.from ?? '/';
 
   useEffect(() => {
     getMovieDetails(movieId).then(movie => setMovie(movie));
@@ -27,10 +27,14 @@ const MovieDetails = () => {
       <p>{overview}</p>
       <p>Additional information</p>
       <p>
-        <Link to={`cast`}>Cast</Link>
+        <Link to={`cast`} state={{ from: backLinkHref }}>
+          Cast
+        </Link>
       </p>
       <p>
-        <Link to={`reviews`}>Reviews</Link>
+        <Link to={`reviews`} state={{ from: backLinkHref }}>
+          Reviews
+        </Link>
       </p>
       <Suspense fallback={<div>Загрузка...</div>}>
         <Outlet />
